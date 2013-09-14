@@ -20,22 +20,31 @@ Sample Outputs:
 The system marks every location word by a <loc> and </loc> label. 
 
 Suppose the "List of Locations" contains:
+
 > Amritsar, Bharatpur, Chitrakoot, Gorakhpur, Kolkata
 
 Input queries are:
 
 > computer dealers in bharatpur
+
 > reliance mall in chitrakut
+
 > how 2 go to amitsar
+
 > tourist places near gorakpur
+
 > victoria memorial kolkata 
 
 The expected output is:
 
 > computer dealers in <loc>bharatpur</loc>
+
 > reliance mall in <loc>chitrakoot</loc>
+
 > how 2 go to <loc>amritsar</loc>
+
 > tourist places near <loc>gorakhpur</loc>
+
 > victoria memorial <loc>kolkata</loc> 
 
 
