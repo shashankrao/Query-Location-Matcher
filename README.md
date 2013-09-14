@@ -3,7 +3,7 @@ Query-Location-Matcher
 
 To identify the location name, Given a list of web search queries where query has exactly one location name.
 
-## Problem Statement:
+### Problem Statement:
 
 ***
 
@@ -11,7 +11,7 @@ You are given a list of web search queries, one in every line. Every query has e
 
 However, when real users type in a query, they often make spelling mistakes (e.g., "Cijapur" instead of "Bijapur") or may not know the correct spelling of the location and therefore, type something which sounds similar (e.g., "Chitrakut" instead of "Chitrakoot"). Therefore, your task is not only to identify the location word but to replace it with the correct spelling from the list of locations whenever it is incorrect.
 
-## Sample Outputs:
+### Sample Outputs:
 
 ***
 
