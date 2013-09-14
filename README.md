@@ -35,14 +35,11 @@ Input queries are:
 
 The expected output is:
 
-> computer dealers in <loc>bharatpur</loc>
-
-> reliance mall in <loc>chitrakoot</loc>
-
-> how 2 go to <loc>amritsar</loc>
-
-> tourist places near <loc>gorakhpur</loc>
-
-> victoria memorial <loc>kolkata</loc> 
+```html
+computer dealers in <loc>bharatpur</loc>
+reliance mall in <loc>chitrakoot</loc>
+how 2 go to <loc>amritsar</loc>
+tourist places near <loc>gorakhpur</loc>
+victoria memorial <loc>kolkata</loc> 
 
 
