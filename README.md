@@ -58,3 +58,11 @@ tourist places near <loc>gorakhpur</loc>
 victoria memorial <loc>kolkata</loc> 
 ```
 
+### Developed by:
+
+***
+
+*Shashank S Rao and Rohit Varma D* (R.V. College of Engineering) for the Microsoft Pre-FIRE Competition.
+
+
+
