@@ -26,10 +26,10 @@ def getlocations(locpath):
 
 	fo=open(locpath,"r")
 	for line in fo:
-    	places.append(line.replace('\n','').upper())
-    	sdx[dm(line.replace('\n','').upper())[0]] = line.replace('\n','').upper()
-    	sdx3[soundex2((line.replace('\n','').upper()),3)] = line.replace('\n','').upper()
-    	sdx4[soundex2((line.replace('\n','').upper()),4)] = line.replace('\n','').upper()            
+		places.append(line.replace('\n','').upper())
+		sdx[dm(line.replace('\n','').upper())[0]] = line.replace('\n','').upper()
+		sdx3[soundex2((line.replace('\n','').upper()),3)] = line.replace('\n','').upper()
+		sdx4[soundex2((line.replace('\n','').upper()),4)] = line.replace('\n','').upper()            
 	fo.close()
 
 def matchlocations(inputfile,outputfile):
@@ -44,60 +44,63 @@ def matchlocations(inputfile,outputfile):
 	fo = open(inputfile,"r")
 	printer = open(outputfile,"w")
 	for line in fo:
-    	print i
-    	i = i+1
-    	chkr.set_text(line)
-    	for err in chkr:
-        	#print "error",err.word
-        	toprint = err.word
-        	word = err.word.upper()
-        	mind = 4
-        	replace = []
-        	flag = False
-        	soundFlag = False
-        	noFlag = False
-        	if word in places:
-            	line = line.replace(toprint,"<loc>"+word.lower()+"</loc>")
-        	else:
-            	for place in places:
-                	dist = minEditDist(word,place)
-                	#print place,dist
-                	if dist<mind:
-                    	replace=[]
-                    	replace.append(place)
-                    	mind = dist
-                    	flag = True
-                	elif dist == mind:
-                    	replace.append(place)
-                    	flag == True
-            	if flag == True and len(word) > mind:
-                	if mind ==1 and len(replace)==1:
-                    	line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")    
-                	else:
-                    	if(soundex2(word,4) in sdx4 and len(word)>3):
-                        	line = line.replace(toprint,"<loc>"+sdx4[soundex2(word,4)].lower()+"</loc>")
-                    	elif(soundex2(word,3) in sdx3 and len(word)>3):
-                        	line = line.replace(toprint,"<loc>"+sdx3[soundex2(word,3)].lower()+"</loc>")
-                    	elif(dm(word)[0] in sdx and len(word)>3):
-                        	line = line.replace(toprint,"<loc>"+sdx[dm(word)[0]].lower()+"</loc>")  
-                    	else:
-                        	if len(replace) == 1:
-                            	line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")
-                        	else:
-                            	#print replace
-                            	for ele in replace:
-                                	if(dm(ele)[0] == dm(toprint)[0]):
-                                    	line = line.replace(toprint,"<loc>"+ele.lower()+"</loc>")
-                                    	soundFlag = True
-                                    	break
-                            	if soundFlag == False:
-                                	line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")
-            	elif(dm(word)[0] in sdx and len(word)>3):
-                	        line = line.replace(toprint,"<loc>"+sdx[dm(word)[0]].lower()+"</loc>")
-    	printer.write(line)
+		print "Query ",i," processed"
+		i = i+1
+		chkr.set_text(line)
+		for err in chkr:
+			#print "error",err.word
+			toprint = err.word
+			word = err.word.upper()
+			mind = 4
+			replace = []
+			flag = False
+			soundFlag = False
+			noFlag = False
+			if word in places:
+				line = line.replace(toprint,"<loc>"+word.lower()+"</loc>")
+			else:
+				for place in places:
+					dist = minEditDist(word,place)
+					if dist<mind:
+						replace=[]
+						replace.append(place)
+						mind = dist
+						flag = True
+					else:
+						if dist == mind:
+							replace.append(place)
+							flag == True
+				if flag == True and len(word) > mind:
+					if mind ==1 and len(replace)==1:
+						line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")    
+					else:
+						if(soundex2(word,4) in sdx4 and len(word)>3):
+							line = line.replace(toprint,"<loc>"+sdx4[soundex2(word,4)].lower()+"</loc>")
+						elif(soundex2(word,3) in sdx3 and len(word)>3):
+							line = line.replace(toprint,"<loc>"+sdx3[soundex2(word,3)].lower()+"</loc>")
+						elif(dm(word)[0] in sdx and len(word)>3):
+							line = line.replace(toprint,"<loc>"+sdx[dm(word)[0]].lower()+"</loc>")  
+						else:
+							if len(replace) == 1:
+								line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")
+							else:
+								#print replace
+								for ele in replace:
+									if(dm(ele)[0] == dm(toprint)[0]):
+										line = line.replace(toprint,"<loc>"+ele.lower()+"</loc>")
+										soundFlag = True
+										break
+								if soundFlag == False:
+									line = line.replace(toprint,"<loc>"+replace[0].lower()+"</loc>")
+				else:
+					if (dm(word)[0] in sdx and len(word)>3):
+						line = line.replace(toprint,"<loc>"+sdx[dm(word)[0]].lower()+"</loc>")
+		line = line.replace('\r','')
+		printer.write(line)
 
 	printer.close()
 	fo.close()
+	print "COMPLETED"
 
 
 if __name__ == "__main__":
