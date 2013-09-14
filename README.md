@@ -23,15 +23,13 @@ Suppose the "List of Locations" contains:
 
 Input queries are:
 
-> computer dealers in bharatpur
-
-> reliance mall in chitrakut
-
-> how 2 go to amitsar
-
-> tourist places near gorakpur
-
-> victoria memorial kolkata 
+```html
+computer dealers in bharatpur
+reliance mall in chitrakut
+how 2 go to amitsar
+tourist places near gorakpur
+victoria memorial kolkata 
+```
 
 The expected output is:
 
@@ -41,5 +39,5 @@ reliance mall in <loc>chitrakoot</loc>
 how 2 go to <loc>amritsar</loc>
 tourist places near <loc>gorakhpur</loc>
 victoria memorial <loc>kolkata</loc> 
-
+```
 
